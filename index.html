@@ -221,4 +221,54 @@
         <div class="vrow"><div class="vk" data-en>Booking</div><div class="vk" data-bg>Резервация</div><div><span data-en>Appointments recommended — tap below or call.</span><span data-bg>Препоръчва се резервация — обадете се или пишете.</span></div></div>
         <div class="vrow"><div class="vk" data-en>Location</div><div class="vk" data-bg>Адрес</div><div data-en>Doyran St 23, Belite brezi, 1680 Sofia</div><div data-bg>ул. Дойран 23, Бели брези, 1680 София</div></div>
         <div class="vrow"><div class="vk" data-en>Phone</div><div class="vk" data-bg>Телефон</div><div>089 675 7017</div></div>
-        <div class="vrow"><div class="vk" data-en>Hours</div><div class="vk" data-bg>Часове</div><div><span data-en>Every day · 10:30 AM – 8:00 PM</span><span data-bg>Всеки ден · 10:30 – 20:00</span><
+        <div class="vrow"><div class="vk" data-en>Hours</div><div class="vk" data-bg>Часове</div><div><span data-en>Every day · 10:30 AM – 8:00 PM</span><span data-bg>Всеки ден · 10:30 – 20:00</span>
+          </div></div>
+        <div class="vrow"><div class="vk" data-en>Good for</div><div class="vk" data-bg>Подходящо</div><div><span data-en>Kids welcome · English spoken · Toilet</span><span data-bg>Деца · Английски · Тоалетна</span></div></div>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="tel:+359896757017"><span data-en>Call now</span><span data-bg>Обади се</span></a>
+          <a class="btn btn-ghost" href="#"><span data-en>Book online</span><span data-bg>Запази онлайн</span></a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barber%20Hub%20Doyran%20St%2023%20Sofia&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="band reveal">
+      <h2 data-en>Ready for your best cut yet?</h2><h2 data-bg>Готови за най-добрата подстрижка?</h2>
+      <p data-en>Five-star service, transparent prices, and a barber who speaks your language.</p>
+      <p data-bg>Пет-звездно обслужване, ясни цени и бръснар, който говори вашия език.</p>
+      <a class="btn btn-primary" href="#visit"><span data-en>Book a chair</span><span data-bg>Запази час</span></a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="logo">BARBER<span class="hub">HUB</span></div>
+    <div data-en>Doyran St 23, Belite brezi, 1680 Sofia · 5.0 ★ on Google</div>
+    <div data-bg>ул. Дойран 23, Бели брези, 1680 София · 5.0 ★ в Google</div>
+    <div class="credit">Demo site by Verve &amp; Verse Studio</div>
+  </div>
+</footer>
+<script>
+  function setLang(l){
+    document.body.classList.toggle('bg', l==='bg');
+    document.getElementById('en').classList.toggle('on', l==='en');
+    document.getElementById('bg').classList.toggle('on', l==='bg');
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-bg-text]').forEach(a=>{
+      if(l==='bg'){ a.dataset.enText = a.dataset.enText || a.textContent; a.textContent = a.dataset.bgText; }
+      else if(a.dataset.enText){ a.textContent = a.dataset.enText; }
+    });
+  }
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+</script>
+</body>
+</html>
